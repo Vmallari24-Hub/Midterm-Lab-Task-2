@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Midterm Lab Task 2: Data Cleaning & Transformation</title>
+<style>
+  body {
+    background-color: black;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 30px;
+    max-width: 900px;
+    margin: auto;
+  }
+  h1, h2 {
+    color: #00ffff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  p, ul, li {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  img {
+    display: block;
+    margin: 15px auto;
+    max-width: 100%;
+    border: 2px solid #00ff00;
+  }
+  .glitch {
+    font-size: 36px;
+    color: #00ffff;
+    text-align: center;
+    margin-bottom: 40px;
+    animation: glitch 1.5s infinite;
+  }
+  @keyframes glitch {
+    0% { text-shadow: 2px 0 red, -2px 0 blue; }
+    20% { text-shadow: -2px -2px red, 2px 2px blue; }
+    40% { text-shadow: 2px 2px red, -2px -2px blue; }
+    60% { text-shadow: -2px 2px red, 2px -2px blue; }
+    80% { text-shadow: 2px -2px red, -2px 2px blue; }
+    100% { text-shadow: -2px 0 red, 2px 0 blue; }
+  }
+  .section {
+    margin-bottom: 50px;
+  }
+</style>
+</head>
+<body>
+
+<h1 class="glitch">Midterm Lab Task 2</h1>
+<h2>Data Cleaning and Transformation Using Power Query Editor</h2>
+
+<div class="section">
+  <h3>Step 1 - Cleaning the data using PowerQuery Editor</h3>
+  <ul>
+    <li>Download and open the raw data given by your instructor.</li>
+    <li>Add the required columns (Min Sal, Max Sal, Role Type).</li>
+    <li>Split the columns (Salary Estimate, Location, Size).</li>
+    <li>Change the columns to appropriate data types (Currency, Text).</li>
+    <li>Filter columns (Competitors, Revenue, Industry to remove negative values).</li>
+    <li>Remove unnecessary columns to avoid redundancy (Company Name ratings, extra descriptions).</li>
+    <li>Save the M Language to a notepad.</li>
+  </ul>
+
+  <h4>Before Cleaning</h4>
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/90f96d50eaf163fbda23f64931ab14ccc5c7b28a/Lab%20Task%202/Image/Capture.PNG?raw=true" alt="Before Cleaning 1" />
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/20103bccd0395daa5ead03ecb9b57f7210d3d236/Lab%20Task%202/Image/Capture1.PNG?raw=true" alt="Before Cleaning 2" />
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/a831389c6fd96e49a81666694031d6d38453867a/Lab%20Task%202/Image/Capture2.PNG?raw=true" alt="Before Cleaning 3" />
+
+  <h4>After Cleaning</h4>
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/378a76220ee3cba44e5034d3cacad77fd3c1419a/Lab%20Task%202/Image/Uncleaned%20Ds%20jobs.PNG?raw=true" alt="After Cleaning 1" />
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/1773f8cf095af0da41c064c794c9ba3eae069e35/Lab%20Task%202/Image/Uncleaned%20Ds%20jobs2.PNG?raw=true" alt="After Cleaning 2" />
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/475fcc933dc79fc29bf9c8c17324a019b2125b0d/Lab%20Task%202/Image/Uncleaned%20Ds%20jobs3.PNG?raw=true" alt="After Cleaning 3" />
+</div>
+
+<div class="section">
+  <h3>Step 2 - Reshaping and Grouping the Tables</h3>
+  <ul>
+    <li>Duplicate and reference Unclean DS Jobs to create new queries (Sal By Role Type dup, Sal By Role Size ref, Sal By State ref).</li>
+    <li>Select appropriate columns (Role Type, Size, Min Sal, Max Sal).</li>
+    <li>Change the columns to required data types (Currency).</li>
+    <li>Multiply Min Sal and Max Sal by 1000.</li>
+    <li>Group data by Role Type, Size, State Full Name to get averages.</li>
+    <li>Merge State Mapping with Unclean DS Jobs using State Abbreviation.</li>
+    <li>Rename merged column to State Full Name and remove nulls.</li>
+    <li>Check and review Query Dependencies.</li>
+  </ul>
+
+  <h4>Group Tables</h4>
+  <h5>Sal_By_Role_Type</h5>
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/c5a46773e40949a913bb76847de59de546ded78b/Lab%20Task%202/Image/Role%20type%20Dup.PNG?raw=true" alt="Sal By Role Type" />
+
+  <h5>Sal_By_Role_Size</h5>
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/15e7a19e98ac350d573e89792dc2ea302f05fa1a/Lab%20Task%202/Image/Role%20size%20Dup.PNG?raw=true" alt="Sal By Role Size" />
+
+  <h5>Sal_By_Size_Role_Type</h5>
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/7f96ca1ee92d33c3eed4ffa84964eb3b90d2c0e1/Lab%20Task%202/Image/Size%20Role%20Type%20Dup.PNG?raw=true" alt="Sal By Size Role Type" />
+
+  <h5>States</h5>
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/78fdee3151363d98cbe38e6360ac31ec1b2c9a15/Lab%20Task%202/Image/State.PNG?raw=true" alt="States" />
+
+  <h5>Sal_By_State_ref</h5>
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/f346437fe5d1bcdd03bfd2d1ddc8aa2a2656f3ef/Lab%20Task%202/Image/state%20ref.PNG?raw=true" alt="Sal By State Reference" />
+</div>
+
+<div class="section">
+  <h3>Step 3 - Query Dependencies</h3>
+  <p>Go to View Menu → Click Dependencies. Check if all queries are correctly linked.</p>
+  <img src="https://github.com/Vmallari24-Hub/EDM-Portfolio/blob/a085003ee3fffdd566fafc35e2934c30daf98cde/Lab%20Task%202/Image/Capture.PNG?raw=true" alt="Query Dependencies" />
+</div>
+
+</body>
+</html>
